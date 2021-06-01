@@ -159,13 +159,9 @@ namespace WinFormsApp1
            
             if(File.Exists(filePath))
             {
-                File.Delete(currentlySelectedItemName);
-                MessageBox.Show("File deleted");
+                File.Delete(filePath);
             }
-            else
-            {
-                MessageBox.Show("Fraier...Tot nu merge");
-            }
+            
         }
     }
 }
