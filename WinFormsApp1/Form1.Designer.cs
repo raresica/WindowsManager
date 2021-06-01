@@ -1,4 +1,4 @@
-﻿
+
 namespace WinFormsApp1
 {
     partial class Form1
@@ -30,7 +30,9 @@ namespace WinFormsApp1
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listView1 = new System.Windows.Forms.ListView();
+            this.iconList = new System.Windows.Forms.ImageList(this.components);
             this.backButton = new System.Windows.Forms.Button();
             this.FilePathTextBox = new System.Windows.Forms.TextBox();
             this.goButton = new System.Windows.Forms.Button();
@@ -38,7 +40,7 @@ namespace WinFormsApp1
             this.fileNameLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.fileTypeLabel = new System.Windows.Forms.Label();
-            this.iconList = new System.Windows.Forms.ImageList(this.components);
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -52,6 +54,16 @@ namespace WinFormsApp1
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged);
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
+            // 
+            // iconList
+            // 
+            this.iconList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.iconList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iconList.ImageStream")));
+            this.iconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.iconList.Images.SetKeyName(0, "folder.png");
+            this.iconList.Images.SetKeyName(1, "file.png");
             // 
             // backButton
             // 
@@ -59,8 +71,9 @@ namespace WinFormsApp1
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 1;
-            this.backButton.Text = "Back";
+            this.backButton.Text = "UP";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // FilePathTextBox
             // 
@@ -117,17 +130,22 @@ namespace WinFormsApp1
             this.fileTypeLabel.TabIndex = 7;
             this.fileTypeLabel.Text = "--";
             // 
-            // iconList
+            // deleteButton
             // 
-            this.iconList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.iconList.ImageSize = new System.Drawing.Size(48, 48);
-            this.iconList.TransparentColor = System.Drawing.Color.Transparent;
+            this.deleteButton.Location = new System.Drawing.Point(438, 609);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(172, 23);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 672);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.fileTypeLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fileNameLabel);
@@ -155,6 +173,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label fileTypeLabel;
         private System.Windows.Forms.ImageList iconList;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 
